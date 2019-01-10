@@ -1,0 +1,11 @@
+{
+    "name": "mark_mod",
+    "version": "0.1.0",
+    "title": "Marks mod",
+    "author": "Mark",
+    "contact": "mark313@live.nl",
+    "homepage": "",
+    "factorio_version": "0.16",
+    "dependencies": ["base >= 0.16"],
+    "description": "This is a basic mod made by mork to try modding."
+}
