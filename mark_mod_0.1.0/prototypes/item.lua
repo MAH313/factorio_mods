@@ -1,3 +1,5 @@
+
+--Nuclear grenade
 local NukeNade_projectile = table.deepcopy(data.raw.projectile['grenade'])
 
 NukeNade_projectile.name = 'nuke_nade_projectile'
@@ -6,7 +8,7 @@ NukeNade_projectile.action = {
       action_delivery = {
          target_effects = {
             {
-               entity_name = "massive-explosion",
+               entity_name = "big-artillery-explosion",
                type = "create-entity"
             },
             {
@@ -30,7 +32,7 @@ NukeNade_projectile.action = {
                type = "damage"
             },
             {
-               entity_name = "explosion",
+               entity_name = "big-artillery-explosion",
                type = "create-entity"
             }
          },
@@ -55,7 +57,7 @@ NukeNade.icons= {
 }
 
 NukeNade.capsule_action.attack_parameters.range = 30
-NukeNade.capsule_action.attack_parameters.cooldown = 10
+NukeNade.capsule_action.attack_parameters.cooldown = 30
 
 NukeNade.capsule_action.attack_parameters.ammo_type = {
 	action = {
@@ -71,11 +73,14 @@ NukeNade.capsule_action.attack_parameters.ammo_type = {
 }
 
 local recipe_NukeNade = table.deepcopy(data.raw.recipe["grenade"])
-recipe_NukeNade.enabled = true
+recipe_NukeNade.enabled = false
 recipe_NukeNade.name = "nuke_nade"
-recipe_NukeNade.ingredients = {{"copper-plate",1},{"iron-plate",1}}
+recipe_NukeNade.ingredients = {{"grenade",1},{"uranium-238",1}}
 recipe_NukeNade.result = "nuke_nade"
+--recipe_NukeNade.energy_required = 1
 
 data:extend{NukeNade,
             recipe_NukeNade,
             NukeNade_projectile}
+
+table.insert(data.raw["technology"]["uranium-ammo"].effects, {type = "unlock-recipe",recipe = "nuke_nade"})
